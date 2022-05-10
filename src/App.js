@@ -122,7 +122,7 @@ function App(){
     <div className="row">
        {
          cardData.map(card=>{
-           return <Card priceData={card}></Card>
+           return <Card priceData={card} key={card}></Card>
          })
        }
       </div>

@@ -1,22 +1,22 @@
 
 
- function Card(props){
-
+ function Card({priceData:{plan,price,features}}){
+      
   return(
      
        <div className="col-lg-4 col-md-6">
       <div className="card mb-5 mb-lg-0">
           <div className="card-body">
-            <h5 className="card-title text-muted text-uppercase text-center">{props.priceData.plan}</h5>
-            <h6 className="card-price text-center">${props.priceData.price}<span className="period">/month</span></h6>
+            <h5 className="card-title text-muted text-uppercase text-center">{plan}</h5>
+            <h6 className="card-price text-center">${price}<span className="period">/month</span></h6>
             <hr/>
             <ul className="fa-ul">
              {
-               props.priceData.features.map((feature)=>{
-               return <li className={`${feature.bold ? 'fw-bold':''} ${feature.mute ? 'text-muted' : ''}`}>
+               features.map(({bold,mute,name,domain})=>{
+               return <li className={`${bold ? 'fw-bold':''} ${mute ? 'text-muted' : ''}`} key={{bold,mute,name,domain}}>
                  <span className="fa-li">
-                   <i className={`${feature.mute ? 'fas fa-times' : 'fas fa-check'}`}></i>
-                   </span>  <strong>{feature.domain}</strong> {feature.name} </li>
+                   <i className={`${mute ? 'fas fa-times' : 'fas fa-check'}`}></i>
+                   </span>  <strong>{domain}</strong> {name} </li>
               })
              }
             </ul>
